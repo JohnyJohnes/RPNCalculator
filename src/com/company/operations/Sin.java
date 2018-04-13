@@ -3,9 +3,9 @@ package com.company.operations;
 import com.company.ExpressionFormatException;
 import com.company.Operation;
 
-import static java.lang.Math.sqrt;
+import static java.lang.Math.sin;
 
-public class Square_root implements Operation {
+public class Sin implements Operation{
     @Override
     public boolean isBinary() {
         return false;
@@ -13,18 +13,16 @@ public class Square_root implements Operation {
 
     @Override
     public String getOperator() {
-        return "sqrt";
+        return "sin";
     }
 
     @Override
     public String getDescription() {
-        return "performs square root operation";
+        return "performs sin operation";
     }
 
     @Override
     public double execute(double... val) throws ExpressionFormatException {
-        if (val.length != 1)
-            throw new ExpressionFormatException("Wrong");
-        return sqrt(val[0]);
+        return sin(val[0]);
     }
 }

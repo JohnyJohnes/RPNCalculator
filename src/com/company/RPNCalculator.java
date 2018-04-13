@@ -3,6 +3,7 @@ package com.company;
 import com.company.operations.Addition;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 public class RPNCalculator implements Calculator {
 
     private ArrayList<Operation> operations;
-
+    ArrayList<String> notBinary = new ArrayList<String>(Arrays.asList("cos","tan","sqrt","sin","log"));
     public RPNCalculator() {
         this.operations = new ArrayList<>();
     }

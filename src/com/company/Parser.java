@@ -9,14 +9,6 @@ public class Parser {
 
     public Parser(List<String> operators) {
         this.supportedOPS = operators;
-
-        //for test
-        try {
-            //ksjfsdkjf
-            parse("");
-        } catch (ExpressionFormatException ex) {
-            System.err.println(ex.getMessage());
-        }
     }
 
     private boolean isNumber(String token){
