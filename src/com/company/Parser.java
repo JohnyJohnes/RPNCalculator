@@ -18,11 +18,7 @@ public class Parser {
 //        }
 //        return false;
 
-        try{
-            double dummy = Double.valueOf(token);
-        }catch(NumberFormatException ex){
-            return false;
-        }
+
         return true;
 
     }

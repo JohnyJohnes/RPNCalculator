@@ -1,17 +1,15 @@
 package com.company;
 
-import com.company.operations.Addition;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RPNCalculator implements Calculator {
 
     private ArrayList<Operation> operations;
-    ArrayList<String> notBinary = new ArrayList<String>(Arrays.asList("cos","tan","sqrt","sin","log"));
+    private ArrayList<String> notBinary = new ArrayList<String>(Arrays.asList("cos","tan","sqrt","sin","log","^"));
     public RPNCalculator() {
         this.operations = new ArrayList<>();
     }
@@ -42,19 +40,25 @@ public class RPNCalculator implements Calculator {
         double value = Double.valueOf(expression.get(0));
         expression.remove(0);
         while (!expression.isEmpty()){
-            double number = Double.valueOf(expression.remove(0));
-            String operator = expression.remove(0);
-            for (Operation op : this.operations){
-                if (op.getOperator().equals(operator)){
-                    value = op.execute(value, number);
+            if (!(notBinary.stream().equals(expression.get(0)))) {
+                double number = Double.valueOf(expression.remove(0));
+                String operator = expression.remove(0);
+                for (Operation op : this.operations) {
+                    if (op.getOperator().equals(operator)) {
+                        value = op.execute(value, number);
+                    }
                 }
             }
-
+            else {
+                String operator = expression.remove(0);
+                for (Operation op : this.operations) {
+                    if (op.getOperator().equals(operator)) {
+                        value = op.execute(value);
+                    }
+                }
+            }
         }
-
         return value;
-
-
     }
 
     public boolean supportsOperation(String operator){
