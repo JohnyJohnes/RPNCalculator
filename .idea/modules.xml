@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/rpn2.iml" filepath="$PROJECT_DIR$/rpn2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RPNCalculator.iml" filepath="$PROJECT_DIR$/RPNCalculator.iml" />
     </modules>
   </component>
 </project>

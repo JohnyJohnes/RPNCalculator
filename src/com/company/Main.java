@@ -2,14 +2,10 @@ package com.company;
 
 import com.company.operations.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
 
-    public static void main(String[] args) throws ExpressionFormatException{
-	    RPNCalculator calc = new RPNCalculator();
-
+    public static void main(String[] args) throws ExpressionFormatException {
+        RPNCalculator calc = new RPNCalculator();
         calc.addOperation(new Addition());
         calc.addOperation(new Subtraction());
         calc.addOperation(new Multiplication());
@@ -20,10 +16,12 @@ public class Main {
         calc.addOperation(new Sin());
         calc.addOperation(new Log());
         calc.addOperation(new Mod());
+        calc.addOperation(new Exp());
+
         Parser parser = new Parser(calc.getOperators());
+        Interactor interactor = new Interactor(calc, parser);
 
-        List<String> tokens = parser.parse("3 4 + 7 * 9 - 11 %");
+        interactor.run();
 
-        System.out.println(calc.execute(tokens));
     }
 }

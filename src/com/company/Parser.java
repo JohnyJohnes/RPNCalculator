@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Parser {
     private List<String> supportedOPS;
@@ -12,12 +13,6 @@ public class Parser {
     }
 
     private boolean isNumber(String token){
-//        for (int i = 0; i < 10 ; i++) {
-//            if (String.valueOf(token).equals(i))
-//                return true;
-//        }
-//        return false;
-
         try{
             double dummy = Double.valueOf(token);
         }catch(NumberFormatException ex){
@@ -31,7 +26,8 @@ public class Parser {
 
         String[] comp = command.split("\\s+");
 
-        if (!(Arrays.stream(comp).allMatch(c-> isNumber(c) || supportedOPS.stream().anyMatch(op-> op.equals(c))))) {
+
+        if (!(Arrays.stream(comp).allMatch(c-> isNumber(c) || supportedOPS.stream().anyMatch(op-> op.equals(c)))  )) {
             throw new ExpressionFormatException("ODYMAYSYA, TYT OSHIBKA BLET!");
         }
 
@@ -43,7 +39,9 @@ public class Parser {
 //            }
 //        }
 
+        return Arrays.stream(comp).map(String::trim).collect(Collectors.toList());
 
-        return new ArrayList<>(Arrays.asList(comp));
+
+       // return new ArrayList<>(Arrays.asList(comp));
     }
 }

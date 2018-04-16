@@ -3,9 +3,9 @@ package com.company.operations;
 import com.company.ExpressionFormatException;
 import com.company.Operation;
 
-import static java.lang.Math.tan;
+import static java.lang.Math.exp;
 
-public class Tan implements Operation{
+public class Exp implements Operation{
     @Override
     public boolean isBinary() {
         return false;
@@ -13,16 +13,16 @@ public class Tan implements Operation{
 
     @Override
     public String getOperator() {
-        return "tan";
+        return "exp";
     }
 
     @Override
     public String getDescription() {
-        return "performs a tan operation";
+        return "performs exp operation";
     }
 
     @Override
     public double execute(double... val) throws ExpressionFormatException {
-        return -1*tan(val[0]);
+        return exp(val[0]);
     }
 }
